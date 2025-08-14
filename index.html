@@ -53,11 +53,11 @@
         <script src="data/SecoursPopulaire_16.js"></script>
         <script src="data/SecoursCatholique_17.js"></script>
         <script src="data/CroixRouge_18.js"></script>
-        <script src="data/Associationspartenaires_19.js"></script>
+        <script src="data/AssociationspartenairesetouCCAS_19.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[48.25957312737113,-0.3627196404447932],[49.23909117024027,2.405922379682263]]);
+        }).fitBounds([[48.11297914874818,-0.7309576635734983],[49.102378032221715,2.2282587677437404]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -1306,7 +1306,7 @@
         });
         bounds_group.addLayer(layer_CroixRouge_18);
         map.addLayer(layer_CroixRouge_18);
-        function pop_Associationspartenaires_19(feature, layer) {
+        function pop_AssociationspartenairesetouCCAS_19(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td class="visible-with-data" id="Partenaires" colspan="2"><strong>Partenaires</strong><br />' + (feature.properties['Partenaires'] !== null ? autolinker.link(String(feature.properties['Partenaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -1337,9 +1337,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Associationspartenaires_19_0() {
+        function style_AssociationspartenairesetouCCAS_19_0() {
             return {
-                pane: 'pane_Associationspartenaires_19',
+                pane: 'pane_AssociationspartenairesetouCCAS_19',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -1353,28 +1353,28 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_Associationspartenaires_19');
-        map.getPane('pane_Associationspartenaires_19').style.zIndex = 419;
-        map.getPane('pane_Associationspartenaires_19').style['mix-blend-mode'] = 'normal';
-        var layer_Associationspartenaires_19 = new L.geoJson(json_Associationspartenaires_19, {
+        map.createPane('pane_AssociationspartenairesetouCCAS_19');
+        map.getPane('pane_AssociationspartenairesetouCCAS_19').style.zIndex = 419;
+        map.getPane('pane_AssociationspartenairesetouCCAS_19').style['mix-blend-mode'] = 'normal';
+        var layer_AssociationspartenairesetouCCAS_19 = new L.geoJson(json_AssociationspartenairesetouCCAS_19, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Associationspartenaires_19',
-            layerName: 'layer_Associationspartenaires_19',
-            pane: 'pane_Associationspartenaires_19',
-            onEachFeature: pop_Associationspartenaires_19,
+            dataVar: 'json_AssociationspartenairesetouCCAS_19',
+            layerName: 'layer_AssociationspartenairesetouCCAS_19',
+            pane: 'pane_AssociationspartenairesetouCCAS_19',
+            onEachFeature: pop_AssociationspartenairesetouCCAS_19,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_Associationspartenaires_19_0(feature));
+                return L.circleMarker(latlng, style_AssociationspartenairesetouCCAS_19_0(feature));
             },
         });
-        bounds_group.addLayer(layer_Associationspartenaires_19);
-        map.addLayer(layer_Associationspartenaires_19);
+        bounds_group.addLayer(layer_AssociationspartenairesetouCCAS_19);
+        map.addLayer(layer_AssociationspartenairesetouCCAS_19);
         var overlaysTree = [
-            {label: '<img src="legend/Associationspartenaires_19.png" /> Associations partenaires', layer: layer_Associationspartenaires_19},
+            {label: '<img src="legend/AssociationspartenairesetouCCAS_19.png" /> Associations partenaires et/ou CCAS', layer: layer_AssociationspartenairesetouCCAS_19},
             {label: '<img src="legend/CroixRouge_18.png" /> Croix Rouge', layer: layer_CroixRouge_18},
             {label: '<img src="legend/SecoursCatholique_17.png" /> Secours Catholique', layer: layer_SecoursCatholique_17},
             {label: '<img src="legend/SecoursPopulaire_16.png" /> Secours Populaire', layer: layer_SecoursPopulaire_16},
@@ -1459,7 +1459,7 @@
             layer: layer_Communes_1,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'codgeo'}));
+            propertyName: 'libgeo'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
         </script>
