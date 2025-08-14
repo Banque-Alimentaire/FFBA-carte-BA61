@@ -36,24 +36,28 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-search.js"></script>
         <script src="data/Communes_1.js"></script>
-        <script src="data/EPCI_Orne_2.js"></script>
-        <script src="data/Indicecontraineconomique_3.js"></script>
-        <script src="data/Indiceenvironementalimentaireappauvri_4.js"></script>
-        <script src="data/Indiceisolementsocial_5.js"></script>
-        <script src="data/Indicerisquedeprcaritalimentaire_6.js"></script>
-        <script src="data/TauxdepauvretEPCI2020_7.js"></script>
-        <script src="data/Dpartements_Normandie_8.js"></script>
-        <script src="data/Normandie_9.js"></script>
-        <script src="data/RestoduCoeur_Orne_10.js"></script>
-        <script src="data/SecoursPopulaire_Orne_11.js"></script>
-        <script src="data/SecoursCatholique_Orne_12.js"></script>
-        <script src="data/CroixRouge_Orne_13.js"></script>
-        <script src="data/Associationspartenaires_BA61_14.js"></script>
-        <script src="data/BanquesAlimentairesRgionNormandieBA72_15.js"></script>
+        <script src="data/EPCI_2.js"></script>
+        <script src="data/RgionNormandie_3.js"></script>
+        <script src="data/Dpartement_4.js"></script>
+        <script src="data/Indicecontraineconomique_5.js"></script>
+        <script src="data/Indiceenvironementalimentaireappauvri_6.js"></script>
+        <script src="data/Indiceinformationalimentaireinsufisante_7.js"></script>
+        <script src="data/Indiceisolementsocial_8.js"></script>
+        <script src="data/Indicerisquedeprcaritalimentaire_9.js"></script>
+        <script src="data/TauxdepauvretEPCI2020_10.js"></script>
+        <script src="data/Communescouvertesparuneaidealimentaire_11.js"></script>
+        <script src="data/Trononsderoute_12.js"></script>
+        <script src="data/Lignesdebus_13.js"></script>
+        <script src="data/Autresassociationsnonpartenaires_14.js"></script>
+        <script src="data/RestoduCoeur_15.js"></script>
+        <script src="data/SecoursPopulaire_16.js"></script>
+        <script src="data/SecoursCatholique_17.js"></script>
+        <script src="data/CroixRouge_18.js"></script>
+        <script src="data/Associationspartenaires_19.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[48.110341375965106,-0.9067988869475648],[49.07863532836717,1.1545932678741295]]);
+        }).fitBounds([[48.25957312737113,-0.3627196404447932],[49.23909117024027,2.405922379682263]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -91,26 +95,23 @@
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        map.createPane('pane_GoogleRoad_0');
-        map.getPane('pane_GoogleRoad_0').style.zIndex = 400;
-        var layer_GoogleRoad_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-            pane: 'pane_GoogleRoad_0',
+        map.createPane('pane_GoogleMaps_0');
+        map.getPane('pane_GoogleMaps_0').style.zIndex = 400;
+        var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleMaps_0',
             opacity: 1.0,
-            attribution: '<a href="https://www.google.at/permissions/geoguidelines/attr-guide.html">Map data ©2015 Google</a>',
+            attribution: '',
             minZoom: 1,
             maxZoom: 28,
             minNativeZoom: 0,
-            maxNativeZoom: 20
+            maxNativeZoom: 19
         });
-        layer_GoogleRoad_0;
-        map.addLayer(layer_GoogleRoad_0);
+        layer_GoogleMaps_0;
+        map.addLayer(layer_GoogleMaps_0);
         function pop_Communes_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>Commune</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Périmètr" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['Périmètr'] !== null ? autolinker.link(String(feature.properties['Périmètr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -149,7 +150,7 @@
         });
         bounds_group.addLayer(layer_Communes_1);
         map.addLayer(layer_Communes_1);
-        function pop_EPCI_Orne_2(feature, layer) {
+        function pop_EPCI_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td class="visible-with-data" id="NOM" colspan="2"><strong>NOM</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
@@ -162,9 +163,9 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_EPCI_Orne_2_0() {
+        function style_EPCI_2_0() {
             return {
-                pane: 'pane_EPCI_Orne_2',
+                pane: 'pane_EPCI_2',
                 opacity: 1,
                 color: 'rgba(21,126,231,1.0)',
                 dashArray: '',
@@ -177,34 +178,22 @@
                 interactive: true,
             }
         }
-        map.createPane('pane_EPCI_Orne_2');
-        map.getPane('pane_EPCI_Orne_2').style.zIndex = 402;
-        map.getPane('pane_EPCI_Orne_2').style['mix-blend-mode'] = 'normal';
-        var layer_EPCI_Orne_2 = new L.geoJson(json_EPCI_Orne_2, {
+        map.createPane('pane_EPCI_2');
+        map.getPane('pane_EPCI_2').style.zIndex = 402;
+        map.getPane('pane_EPCI_2').style['mix-blend-mode'] = 'normal';
+        var layer_EPCI_2 = new L.geoJson(json_EPCI_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_EPCI_Orne_2',
-            layerName: 'layer_EPCI_Orne_2',
-            pane: 'pane_EPCI_Orne_2',
-            onEachFeature: pop_EPCI_Orne_2,
-            style: style_EPCI_Orne_2_0,
+            dataVar: 'json_EPCI_2',
+            layerName: 'layer_EPCI_2',
+            pane: 'pane_EPCI_2',
+            onEachFeature: pop_EPCI_2,
+            style: style_EPCI_2_0,
         });
-        bounds_group.addLayer(layer_EPCI_Orne_2);
-        map.addLayer(layer_EPCI_Orne_2);
-        function pop_Indicecontraineconomique_3(feature, layer) {
+        bounds_group.addLayer(layer_EPCI_2);
+        map.addLayer(layer_EPCI_2);
+        function pop_RgionNormandie_3(feature, layer) {
             var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>Commune</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Périmètr" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['Périmètr'] !== null ? autolinker.link(String(feature.properties['Périmètr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Médiane d" colspan="2"><strong>Médiane_revenu_disponible_ménages</strong><br />' + (feature.properties['Médiane d'] !== null ? autolinker.link(String(feature.properties['Médiane d']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="jenks_cut_" colspan="2"><strong>Indice_contrainte_économique </strong><br />' + (feature.properties['jenks_cut_'] !== null ? autolinker.link(String(feature.properties['jenks_cut_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
 			layer.on('popupopen', function(e) {
@@ -213,636 +202,74 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Indicecontraineconomique_3_0(feature) {
-            switch(String(feature.properties['q2wHide_jenks_cu_1'])) {
-                case '1 - Le plus bas':
-                    return {
-                pane: 'pane_Indicecontraineconomique_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(247,251,255,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2 - Bas':
-                    return {
-                pane: 'pane_Indicecontraineconomique_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(200,220,240,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3 - Moyen':
-                    return {
-                pane: 'pane_Indicecontraineconomique_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(115,178,216,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '4 - Elevé':
-                    return {
-                pane: 'pane_Indicecontraineconomique_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(41,121,185,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '5 - Le plus élevé':
-                    return {
-                pane: 'pane_Indicecontraineconomique_3',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(8,48,107,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Indicecontraineconomique_3');
-        map.getPane('pane_Indicecontraineconomique_3').style.zIndex = 403;
-        map.getPane('pane_Indicecontraineconomique_3').style['mix-blend-mode'] = 'normal';
-        var layer_Indicecontraineconomique_3 = new L.geoJson(json_Indicecontraineconomique_3, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Indicecontraineconomique_3',
-            layerName: 'layer_Indicecontraineconomique_3',
-            pane: 'pane_Indicecontraineconomique_3',
-            onEachFeature: pop_Indicecontraineconomique_3,
-            style: style_Indicecontraineconomique_3_0,
-        });
-        bounds_group.addLayer(layer_Indicecontraineconomique_3);
-        function pop_Indiceenvironementalimentaireappauvri_4(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>Commune</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Périmètr" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['Périmètr'] !== null ? autolinker.link(String(feature.properties['Périmètr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Taux de no" colspan="2"><strong>Motorisation_des_ménages</strong><br />' + (feature.properties['Taux de no'] !== null ? autolinker.link(String(feature.properties['Taux de no']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Temps d’" colspan="2"><strong>Temps_accès_GMS</strong><br />' + (feature.properties['Temps d’'] !== null ? autolinker.link(String(feature.properties['Temps d’']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="jenks_cut_" colspan="2"><strong>Indice_environnement_alimentaire_appauvri</strong><br />' + (feature.properties['jenks_cut_'] !== null ? autolinker.link(String(feature.properties['jenks_cut_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Indiceenvironementalimentaireappauvri_4_0(feature) {
-            switch(String(feature.properties['jenks_cut_'])) {
-                case '1 - Le plus bas':
-                    return {
-                pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(247,252,245,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2 - Bas':
-                    return {
-                pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(201,234,194,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3 - Moyen':
-                    return {
-                pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(123,199,124,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '4 - Elevé':
-                    return {
-                pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(42,146,75,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '5 - Le plus élevé':
-                    return {
-                pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(0,68,27,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Indiceenvironementalimentaireappauvri_4');
-        map.getPane('pane_Indiceenvironementalimentaireappauvri_4').style.zIndex = 404;
-        map.getPane('pane_Indiceenvironementalimentaireappauvri_4').style['mix-blend-mode'] = 'normal';
-        var layer_Indiceenvironementalimentaireappauvri_4 = new L.geoJson(json_Indiceenvironementalimentaireappauvri_4, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Indiceenvironementalimentaireappauvri_4',
-            layerName: 'layer_Indiceenvironementalimentaireappauvri_4',
-            pane: 'pane_Indiceenvironementalimentaireappauvri_4',
-            onEachFeature: pop_Indiceenvironementalimentaireappauvri_4,
-            style: style_Indiceenvironementalimentaireappauvri_4_0,
-        });
-        bounds_group.addLayer(layer_Indiceenvironementalimentaireappauvri_4);
-        function pop_Indiceisolementsocial_5(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>Commune</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="jenks_cut_" colspan="2"><strong>Indice_isolement social</strong><br />' + (feature.properties['jenks_cut_'] !== null ? autolinker.link(String(feature.properties['jenks_cut_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="jenks_cu_1" colspan="2"><strong>jenks_cu_1</strong><br />' + (feature.properties['jenks_cu_1'] !== null ? autolinker.link(String(feature.properties['jenks_cu_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Part des j" colspan="2"><strong>Jeunes_non_insérés</strong><br />' + (feature.properties['Part des j'] !== null ? autolinker.link(String(feature.properties['Part des j']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Part des m" colspan="2"><strong>Personnes_isolées</strong><br />' + (feature.properties['Part des m'] !== null ? autolinker.link(String(feature.properties['Part des m']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Part des_1" colspan="2"><strong>Part_des_ménages_monoparentaux</strong><br />' + (feature.properties['Part des_1'] !== null ? autolinker.link(String(feature.properties['Part des_1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Part des p" colspan="2"><strong>Plus_de_75ans</strong><br />' + (feature.properties['Part des p'] !== null ? autolinker.link(String(feature.properties['Part des p']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Taux de ch" colspan="2"><strong>Taux_de_chomage_15-75ans</strong><br />' + (feature.properties['Taux de ch'] !== null ? autolinker.link(String(feature.properties['Taux de ch']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Indiceisolementsocial_5_0(feature) {
-            switch(String(feature.properties['jenks_cut_'])) {
-                case '1 - Le plus bas':
-                    return {
-                pane: 'pane_Indiceisolementsocial_5',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,245,240,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '2 - Bas':
-                    return {
-                pane: 'pane_Indiceisolementsocial_5',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(252,190,165,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '3 - Moyen':
-                    return {
-                pane: 'pane_Indiceisolementsocial_5',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(251,112,80,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '4 - Elevé':
-                    return {
-                pane: 'pane_Indiceisolementsocial_5',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(211,32,32,1.0)',
-                interactive: true,
-            }
-                    break;
-                case '5 - Le plus élevé':
-                    return {
-                pane: 'pane_Indiceisolementsocial_5',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(103,0,13,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Indiceisolementsocial_5');
-        map.getPane('pane_Indiceisolementsocial_5').style.zIndex = 405;
-        map.getPane('pane_Indiceisolementsocial_5').style['mix-blend-mode'] = 'normal';
-        var layer_Indiceisolementsocial_5 = new L.geoJson(json_Indiceisolementsocial_5, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Indiceisolementsocial_5',
-            layerName: 'layer_Indiceisolementsocial_5',
-            pane: 'pane_Indiceisolementsocial_5',
-            onEachFeature: pop_Indiceisolementsocial_5,
-            style: style_Indiceisolementsocial_5_0,
-        });
-        bounds_group.addLayer(layer_Indiceisolementsocial_5);
-        function pop_Indicerisquedeprcaritalimentaire_6(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>Commune</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Périmètr" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['Périmètr'] !== null ? autolinker.link(String(feature.properties['Périmètr']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="jenks_cut_" colspan="2"><strong>Indice_risque_de_précarité_alimentaire</strong><br />' + (feature.properties['jenks_cut_'] !== null ? autolinker.link(String(feature.properties['jenks_cut_']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Indicerisquedeprcaritalimentaire_6_0(feature) {
-            switch(String(feature.properties['q2wHide_jenks_cu_1'])) {
-                case '1 - Le plus bas':
-                    return {
-                pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,245,235,0.7)',
-                interactive: true,
-            }
-                    break;
-                case '2 - Bas':
-                    return {
-                pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,210,165,0.7)',
-                interactive: true,
-            }
-                    break;
-                case '3 - Moyen':
-                    return {
-                pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,146,67,0.7)',
-                interactive: true,
-            }
-                    break;
-                case '4 - Elevé':
-                    return {
-                pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(223,80,5,0.7)',
-                interactive: true,
-            }
-                    break;
-                case '5 - Le plus élevé':
-                    return {
-                pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(127,39,4,0.7)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Indicerisquedeprcaritalimentaire_6');
-        map.getPane('pane_Indicerisquedeprcaritalimentaire_6').style.zIndex = 406;
-        map.getPane('pane_Indicerisquedeprcaritalimentaire_6').style['mix-blend-mode'] = 'normal';
-        var layer_Indicerisquedeprcaritalimentaire_6 = new L.geoJson(json_Indicerisquedeprcaritalimentaire_6, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Indicerisquedeprcaritalimentaire_6',
-            layerName: 'layer_Indicerisquedeprcaritalimentaire_6',
-            pane: 'pane_Indicerisquedeprcaritalimentaire_6',
-            onEachFeature: pop_Indicerisquedeprcaritalimentaire_6,
-            style: style_Indicerisquedeprcaritalimentaire_6_0,
-        });
-        bounds_group.addLayer(layer_Indicerisquedeprcaritalimentaire_6);
-        function pop_TauxdepauvretEPCI2020_7(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="NOM" colspan="2"><strong>EPCI</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Taux de pa" colspan="2"><strong>Taux de pauvreté en % (2020)</strong><br />' + (feature.properties['Taux de pa'] !== null ? autolinker.link(String(feature.properties['Taux de pa']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_TauxdepauvretEPCI2020_7_0(feature) {
-            if (feature.properties['Taux de pa'] >= 11.500000 && feature.properties['Taux de pa'] <= 12.100000 ) {
-                return {
-                pane: 'pane_TauxdepauvretEPCI2020_7',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(43,131,186,0.7)',
-                interactive: true,
-            }
-            }
-            if (feature.properties['Taux de pa'] >= 12.100000 && feature.properties['Taux de pa'] <= 13.500000 ) {
-                return {
-                pane: 'pane_TauxdepauvretEPCI2020_7',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(171,221,164,0.7)',
-                interactive: true,
-            }
-            }
-            if (feature.properties['Taux de pa'] >= 13.500000 && feature.properties['Taux de pa'] <= 14.500000 ) {
-                return {
-                pane: 'pane_TauxdepauvretEPCI2020_7',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(255,255,191,0.7)',
-                interactive: true,
-            }
-            }
-            if (feature.properties['Taux de pa'] >= 14.500000 && feature.properties['Taux de pa'] <= 16.600000 ) {
-                return {
-                pane: 'pane_TauxdepauvretEPCI2020_7',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(253,174,97,0.7)',
-                interactive: true,
-            }
-            }
-            if (feature.properties['Taux de pa'] >= 16.600000 && feature.properties['Taux de pa'] <= 18.700000 ) {
-                return {
-                pane: 'pane_TauxdepauvretEPCI2020_7',
-                opacity: 1,
-                color: 'rgba(35,35,35,0.7)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(215,25,28,0.7)',
-                interactive: true,
-            }
-            }
-        }
-        map.createPane('pane_TauxdepauvretEPCI2020_7');
-        map.getPane('pane_TauxdepauvretEPCI2020_7').style.zIndex = 407;
-        map.getPane('pane_TauxdepauvretEPCI2020_7').style['mix-blend-mode'] = 'normal';
-        var layer_TauxdepauvretEPCI2020_7 = new L.geoJson(json_TauxdepauvretEPCI2020_7, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_TauxdepauvretEPCI2020_7',
-            layerName: 'layer_TauxdepauvretEPCI2020_7',
-            pane: 'pane_TauxdepauvretEPCI2020_7',
-            onEachFeature: pop_TauxdepauvretEPCI2020_7,
-            style: style_TauxdepauvretEPCI2020_7_0,
-        });
-        bounds_group.addLayer(layer_TauxdepauvretEPCI2020_7);
-        function pop_Dpartements_Normandie_8(feature, layer) {
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="libgeo" colspan="2"><strong>libgeo</strong><br />' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Dpartements_Normandie_8_0() {
+        function style_RgionNormandie_3_0() {
             return {
-                pane: 'pane_Dpartements_Normandie_8',
-                opacity: 1,
-                color: 'rgba(218,6,13,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 3.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(183,72,75,0.0)',
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Dpartements_Normandie_8');
-        map.getPane('pane_Dpartements_Normandie_8').style.zIndex = 408;
-        map.getPane('pane_Dpartements_Normandie_8').style['mix-blend-mode'] = 'normal';
-        var layer_Dpartements_Normandie_8 = new L.geoJson(json_Dpartements_Normandie_8, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Dpartements_Normandie_8',
-            layerName: 'layer_Dpartements_Normandie_8',
-            pane: 'pane_Dpartements_Normandie_8',
-            onEachFeature: pop_Dpartements_Normandie_8,
-            style: style_Dpartements_Normandie_8_0,
-        });
-        bounds_group.addLayer(layer_Dpartements_Normandie_8);
-        function pop_Normandie_9(feature, layer) {
-        }
-
-        function style_Normandie_9_0() {
-            return {
-                pane: 'pane_Normandie_9',
+                pane: 'pane_RgionNormandie_3',
                 opacity: 1,
                 color: 'rgba(0,0,0,1.0)',
                 dashArray: '',
                 lineCap: 'square',
                 lineJoin: 'bevel',
-                weight: 4.0,
+                weight: 1.0,
                 fillOpacity: 0,
-                interactive: true,
+                interactive: false,
             }
         }
-        map.createPane('pane_Normandie_9');
-        map.getPane('pane_Normandie_9').style.zIndex = 409;
-        map.getPane('pane_Normandie_9').style['mix-blend-mode'] = 'normal';
-        var layer_Normandie_9 = new L.geoJson(json_Normandie_9, {
+        map.createPane('pane_RgionNormandie_3');
+        map.getPane('pane_RgionNormandie_3').style.zIndex = 403;
+        map.getPane('pane_RgionNormandie_3').style['mix-blend-mode'] = 'normal';
+        var layer_RgionNormandie_3 = new L.geoJson(json_RgionNormandie_3, {
             attribution: '',
-            interactive: true,
-            dataVar: 'json_Normandie_9',
-            layerName: 'layer_Normandie_9',
-            pane: 'pane_Normandie_9',
-            onEachFeature: pop_Normandie_9,
-            style: style_Normandie_9_0,
+            interactive: false,
+            dataVar: 'json_RgionNormandie_3',
+            layerName: 'layer_RgionNormandie_3',
+            pane: 'pane_RgionNormandie_3',
+            onEachFeature: pop_RgionNormandie_3,
+            style: style_RgionNormandie_3_0,
         });
-        bounds_group.addLayer(layer_Normandie_9);
-        map.addLayer(layer_Normandie_9);
-        function pop_RestoduCoeur_Orne_10(feature, layer) {
+        bounds_group.addLayer(layer_RgionNormandie_3);
+        map.addLayer(layer_RgionNormandie_3);
+        function pop_Dpartement_4(feature, layer) {
+            var popupContent = '<table>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Dpartement_4_0() {
+            return {
+                pane: 'pane_Dpartement_4',
+                opacity: 1,
+                color: 'rgba(228,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Dpartement_4');
+        map.getPane('pane_Dpartement_4').style.zIndex = 404;
+        map.getPane('pane_Dpartement_4').style['mix-blend-mode'] = 'normal';
+        var layer_Dpartement_4 = new L.geoJson(json_Dpartement_4, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Dpartement_4',
+            layerName: 'layer_Dpartement_4',
+            pane: 'pane_Dpartement_4',
+            onEachFeature: pop_Dpartement_4,
+            style: style_Dpartement_4_0,
+        });
+        bounds_group.addLayer(layer_Dpartement_4);
+        map.addLayer(layer_Dpartement_4);
+        function pop_Indicecontraineconomique_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Adresse" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(String(feature.properties['Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -852,51 +279,102 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_RestoduCoeur_Orne_10_0() {
-            return {
-                pane: 'pane_RestoduCoeur_Orne_10',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/RestoduCoeur_Orne_10.svg',
-            iconSize: [15.2, 15.2]
-        }),
+        function style_Indicecontraineconomique_5_0(feature) {
+            switch(String(feature.properties['jenks_cu_1'])) {
+                case '1 - Le plus bas':
+                    return {
+                pane: 'pane_Indicecontraineconomique_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,251,255,0.85)',
                 interactive: true,
             }
+                    break;
+                case '2 - Bas':
+                    return {
+                pane: 'pane_Indicecontraineconomique_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(200,220,240,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '3 - Moyen':
+                    return {
+                pane: 'pane_Indicecontraineconomique_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(115,178,216,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '4 - Elevé':
+                    return {
+                pane: 'pane_Indicecontraineconomique_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(41,121,185,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '5 - Le plus élevé':
+                    return {
+                pane: 'pane_Indicecontraineconomique_5',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(8,48,107,0.85)',
+                interactive: true,
+            }
+                    break;
+            }
         }
-        map.createPane('pane_RestoduCoeur_Orne_10');
-        map.getPane('pane_RestoduCoeur_Orne_10').style.zIndex = 410;
-        map.getPane('pane_RestoduCoeur_Orne_10').style['mix-blend-mode'] = 'normal';
-        var layer_RestoduCoeur_Orne_10 = new L.geoJson(json_RestoduCoeur_Orne_10, {
+        map.createPane('pane_Indicecontraineconomique_5');
+        map.getPane('pane_Indicecontraineconomique_5').style.zIndex = 405;
+        map.getPane('pane_Indicecontraineconomique_5').style['mix-blend-mode'] = 'normal';
+        var layer_Indicecontraineconomique_5 = new L.geoJson(json_Indicecontraineconomique_5, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_RestoduCoeur_Orne_10',
-            layerName: 'layer_RestoduCoeur_Orne_10',
-            pane: 'pane_RestoduCoeur_Orne_10',
-            onEachFeature: pop_RestoduCoeur_Orne_10,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_RestoduCoeur_Orne_10_0(feature));
-            },
+            dataVar: 'json_Indicecontraineconomique_5',
+            layerName: 'layer_Indicecontraineconomique_5',
+            pane: 'pane_Indicecontraineconomique_5',
+            onEachFeature: pop_Indicecontraineconomique_5,
+            style: style_Indicecontraineconomique_5_0,
         });
-        bounds_group.addLayer(layer_RestoduCoeur_Orne_10);
-        map.addLayer(layer_RestoduCoeur_Orne_10);
-        function pop_SecoursPopulaire_Orne_11(feature, layer) {
+        bounds_group.addLayer(layer_Indicecontraineconomique_5);
+        function pop_Indiceenvironementalimentaireappauvri_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Adressse" colspan="2"><strong>Adressse</strong><br />' + (feature.properties['Adressse'] !== null ? autolinker.link(String(feature.properties['Adressse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['CP'] !== null ? autolinker.link(String(feature.properties['CP']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Ville'] !== null ? autolinker.link(String(feature.properties['Ville']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -906,45 +384,102 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_SecoursPopulaire_Orne_11_0() {
-            return {
-                pane: 'pane_SecoursPopulaire_Orne_11',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/SecoursPopulaire_Orne_11.svg',
-            iconSize: [20.52, 20.52]
-        }),
+        function style_Indiceenvironementalimentaireappauvri_6_0(feature) {
+            switch(String(feature.properties['jenks_cut_'])) {
+                case '1 - Le plus bas':
+                    return {
+                pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,0.85)',
                 interactive: true,
             }
+                    break;
+                case '2 - Bas':
+                    return {
+                pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(201,234,194,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '3 - Moyen':
+                    return {
+                pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(123,199,124,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '4 - Elevé':
+                    return {
+                pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(42,146,75,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '5 - Le plus élevé':
+                    return {
+                pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,0.85)',
+                interactive: true,
+            }
+                    break;
+            }
         }
-        map.createPane('pane_SecoursPopulaire_Orne_11');
-        map.getPane('pane_SecoursPopulaire_Orne_11').style.zIndex = 411;
-        map.getPane('pane_SecoursPopulaire_Orne_11').style['mix-blend-mode'] = 'normal';
-        var layer_SecoursPopulaire_Orne_11 = new L.geoJson(json_SecoursPopulaire_Orne_11, {
+        map.createPane('pane_Indiceenvironementalimentaireappauvri_6');
+        map.getPane('pane_Indiceenvironementalimentaireappauvri_6').style.zIndex = 406;
+        map.getPane('pane_Indiceenvironementalimentaireappauvri_6').style['mix-blend-mode'] = 'normal';
+        var layer_Indiceenvironementalimentaireappauvri_6 = new L.geoJson(json_Indiceenvironementalimentaireappauvri_6, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SecoursPopulaire_Orne_11',
-            layerName: 'layer_SecoursPopulaire_Orne_11',
-            pane: 'pane_SecoursPopulaire_Orne_11',
-            onEachFeature: pop_SecoursPopulaire_Orne_11,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_SecoursPopulaire_Orne_11_0(feature));
-            },
+            dataVar: 'json_Indiceenvironementalimentaireappauvri_6',
+            layerName: 'layer_Indiceenvironementalimentaireappauvri_6',
+            pane: 'pane_Indiceenvironementalimentaireappauvri_6',
+            onEachFeature: pop_Indiceenvironementalimentaireappauvri_6,
+            style: style_Indiceenvironementalimentaireappauvri_6_0,
         });
-        bounds_group.addLayer(layer_SecoursPopulaire_Orne_11);
-        map.addLayer(layer_SecoursPopulaire_Orne_11);
-        function pop_SecoursCatholique_Orne_12(feature, layer) {
+        bounds_group.addLayer(layer_Indiceenvironementalimentaireappauvri_6);
+        function pop_Indiceinformationalimentaireinsufisante_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Adresse" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(String(feature.properties['Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -954,45 +489,102 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_SecoursCatholique_Orne_12_0() {
-            return {
-                pane: 'pane_SecoursCatholique_Orne_12',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/SecoursCatholique_Orne_12.svg',
-            iconSize: [15.2, 15.2]
-        }),
+        function style_Indiceinformationalimentaireinsufisante_7_0(feature) {
+            switch(String(feature.properties['jenks_cut_'])) {
+                case '1 - Le plus bas':
+                    return {
+                pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(241,238,246,0.85)',
                 interactive: true,
             }
+                    break;
+                case '2 - Bas':
+                    return {
+                pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,181,216,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '3 - Moyen':
+                    return {
+                pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,101,176,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '4 - Elevé':
+                    return {
+                pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(221,28,119,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '5 - Le plus élevé':
+                    return {
+                pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(152,0,67,0.85)',
+                interactive: true,
+            }
+                    break;
+            }
         }
-        map.createPane('pane_SecoursCatholique_Orne_12');
-        map.getPane('pane_SecoursCatholique_Orne_12').style.zIndex = 412;
-        map.getPane('pane_SecoursCatholique_Orne_12').style['mix-blend-mode'] = 'normal';
-        var layer_SecoursCatholique_Orne_12 = new L.geoJson(json_SecoursCatholique_Orne_12, {
+        map.createPane('pane_Indiceinformationalimentaireinsufisante_7');
+        map.getPane('pane_Indiceinformationalimentaireinsufisante_7').style.zIndex = 407;
+        map.getPane('pane_Indiceinformationalimentaireinsufisante_7').style['mix-blend-mode'] = 'normal';
+        var layer_Indiceinformationalimentaireinsufisante_7 = new L.geoJson(json_Indiceinformationalimentaireinsufisante_7, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_SecoursCatholique_Orne_12',
-            layerName: 'layer_SecoursCatholique_Orne_12',
-            pane: 'pane_SecoursCatholique_Orne_12',
-            onEachFeature: pop_SecoursCatholique_Orne_12,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_SecoursCatholique_Orne_12_0(feature));
-            },
+            dataVar: 'json_Indiceinformationalimentaireinsufisante_7',
+            layerName: 'layer_Indiceinformationalimentaireinsufisante_7',
+            pane: 'pane_Indiceinformationalimentaireinsufisante_7',
+            onEachFeature: pop_Indiceinformationalimentaireinsufisante_7,
+            style: style_Indiceinformationalimentaireinsufisante_7_0,
         });
-        bounds_group.addLayer(layer_SecoursCatholique_Orne_12);
-        map.addLayer(layer_SecoursCatholique_Orne_12);
-        function pop_CroixRouge_Orne_13(feature, layer) {
+        bounds_group.addLayer(layer_Indiceinformationalimentaireinsufisante_7);
+        function pop_Indiceisolementsocial_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(String(feature.properties['Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1002,57 +594,102 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_CroixRouge_Orne_13_0() {
-            return {
-                pane: 'pane_CroixRouge_Orne_13',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/CroixRouge_Orne_13.svg',
-            iconSize: [19.0, 19.0]
-        }),
+        function style_Indiceisolementsocial_8_0(feature) {
+            switch(String(feature.properties['jenks_cut_'])) {
+                case '1 - Le plus bas':
+                    return {
+                pane: 'pane_Indiceisolementsocial_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,245,240,0.85)',
                 interactive: true,
             }
+                    break;
+                case '2 - Bas':
+                    return {
+                pane: 'pane_Indiceisolementsocial_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(252,190,165,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '3 - Moyen':
+                    return {
+                pane: 'pane_Indiceisolementsocial_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(251,112,80,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '4 - Elevé':
+                    return {
+                pane: 'pane_Indiceisolementsocial_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(211,32,32,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '5 - Le plus élevé':
+                    return {
+                pane: 'pane_Indiceisolementsocial_8',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(103,0,13,0.85)',
+                interactive: true,
+            }
+                    break;
+            }
         }
-        map.createPane('pane_CroixRouge_Orne_13');
-        map.getPane('pane_CroixRouge_Orne_13').style.zIndex = 413;
-        map.getPane('pane_CroixRouge_Orne_13').style['mix-blend-mode'] = 'normal';
-        var layer_CroixRouge_Orne_13 = new L.geoJson(json_CroixRouge_Orne_13, {
+        map.createPane('pane_Indiceisolementsocial_8');
+        map.getPane('pane_Indiceisolementsocial_8').style.zIndex = 408;
+        map.getPane('pane_Indiceisolementsocial_8').style['mix-blend-mode'] = 'normal';
+        var layer_Indiceisolementsocial_8 = new L.geoJson(json_Indiceisolementsocial_8, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_CroixRouge_Orne_13',
-            layerName: 'layer_CroixRouge_Orne_13',
-            pane: 'pane_CroixRouge_Orne_13',
-            onEachFeature: pop_CroixRouge_Orne_13,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_CroixRouge_Orne_13_0(feature));
-            },
+            dataVar: 'json_Indiceisolementsocial_8',
+            layerName: 'layer_Indiceisolementsocial_8',
+            pane: 'pane_Indiceisolementsocial_8',
+            onEachFeature: pop_Indiceisolementsocial_8,
+            style: style_Indiceisolementsocial_8_0,
         });
-        bounds_group.addLayer(layer_CroixRouge_Orne_13);
-        map.addLayer(layer_CroixRouge_Orne_13);
-        function pop_Associationspartenaires_BA61_14(feature, layer) {
+        bounds_group.addLayer(layer_Indiceisolementsocial_8);
+        function pop_Indicerisquedeprcaritalimentaire_9(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="Partenaire" colspan="2"><strong>Partenaire</strong><br />' + (feature.properties['Partenaire'] !== null ? autolinker.link(String(feature.properties['Partenaire']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Adresse" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Adresse'] !== null ? autolinker.link(String(feature.properties['Adresse']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['CP'] !== null ? autolinker.link(String(feature.properties['CP']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['Ville'] !== null ? autolinker.link(String(feature.properties['Ville']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Téléphon" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphon'] !== null ? autolinker.link(String(feature.properties['Téléphon']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['libgeo'] !== null ? autolinker.link(String(feature.properties['libgeo']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1062,58 +699,340 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Associationspartenaires_BA61_14_0() {
+        function style_Indicerisquedeprcaritalimentaire_9_0(feature) {
+            switch(String(feature.properties['jenks_cu_1'])) {
+                case '1 - Le plus bas':
+                    return {
+                pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,245,235,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '2 - Bas':
+                    return {
+                pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,210,165,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '3 - Moyen':
+                    return {
+                pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,146,67,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '4 - Elevé':
+                    return {
+                pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(223,80,5,0.85)',
+                interactive: true,
+            }
+                    break;
+                case '5 - Le plus élevé':
+                    return {
+                pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+                opacity: 1,
+                color: 'rgba(35,35,35,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(127,39,4,0.85)',
+                interactive: true,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Indicerisquedeprcaritalimentaire_9');
+        map.getPane('pane_Indicerisquedeprcaritalimentaire_9').style.zIndex = 409;
+        map.getPane('pane_Indicerisquedeprcaritalimentaire_9').style['mix-blend-mode'] = 'normal';
+        var layer_Indicerisquedeprcaritalimentaire_9 = new L.geoJson(json_Indicerisquedeprcaritalimentaire_9, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Indicerisquedeprcaritalimentaire_9',
+            layerName: 'layer_Indicerisquedeprcaritalimentaire_9',
+            pane: 'pane_Indicerisquedeprcaritalimentaire_9',
+            onEachFeature: pop_Indicerisquedeprcaritalimentaire_9,
+            style: style_Indicerisquedeprcaritalimentaire_9_0,
+        });
+        bounds_group.addLayer(layer_Indicerisquedeprcaritalimentaire_9);
+        function pop_TauxdepauvretEPCI2020_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="NOM" colspan="2"><strong>NOM</strong><br />' + (feature.properties['NOM'] !== null ? autolinker.link(String(feature.properties['NOM']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Taux_de_pauvrete" colspan="2"><strong>Taux_de_pauvrete</strong><br />' + (feature.properties['Taux_de_pauvrete'] !== null ? autolinker.link(String(feature.properties['Taux_de_pauvrete']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_TauxdepauvretEPCI2020_10_0(feature) {
+            if (feature.properties['Taux_de_pauvrete'] >= 5.000000 && feature.properties['Taux_de_pauvrete'] <= 9.000000 ) {
+                return {
+                pane: 'pane_TauxdepauvretEPCI2020_10',
+                opacity: 1,
+                color: 'rgba(38,89,128,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,234,70,0.85)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Taux_de_pauvrete'] >= 9.000000 && feature.properties['Taux_de_pauvrete'] <= 12.600000 ) {
+                return {
+                pane: 'pane_TauxdepauvretEPCI2020_10',
+                opacity: 1,
+                color: 'rgba(38,89,128,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(190,175,111,0.85)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Taux_de_pauvrete'] >= 12.600000 && feature.properties['Taux_de_pauvrete'] <= 16.100000 ) {
+                return {
+                pane: 'pane_TauxdepauvretEPCI2020_10',
+                opacity: 1,
+                color: 'rgba(38,89,128,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(125,124,120,0.85)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Taux_de_pauvrete'] >= 16.100000 && feature.properties['Taux_de_pauvrete'] <= 20.200000 ) {
+                return {
+                pane: 'pane_TauxdepauvretEPCI2020_10',
+                opacity: 1,
+                color: 'rgba(38,89,128,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(65,77,107,0.85)',
+                interactive: true,
+            }
+            }
+            if (feature.properties['Taux_de_pauvrete'] >= 20.200000 && feature.properties['Taux_de_pauvrete'] <= 29.500000 ) {
+                return {
+                pane: 'pane_TauxdepauvretEPCI2020_10',
+                opacity: 1,
+                color: 'rgba(38,89,128,0.85)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,32,77,0.85)',
+                interactive: true,
+            }
+            }
+        }
+        map.createPane('pane_TauxdepauvretEPCI2020_10');
+        map.getPane('pane_TauxdepauvretEPCI2020_10').style.zIndex = 410;
+        map.getPane('pane_TauxdepauvretEPCI2020_10').style['mix-blend-mode'] = 'normal';
+        var layer_TauxdepauvretEPCI2020_10 = new L.geoJson(json_TauxdepauvretEPCI2020_10, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_TauxdepauvretEPCI2020_10',
+            layerName: 'layer_TauxdepauvretEPCI2020_10',
+            pane: 'pane_TauxdepauvretEPCI2020_10',
+            onEachFeature: pop_TauxdepauvretEPCI2020_10,
+            style: style_TauxdepauvretEPCI2020_10_0,
+        });
+        bounds_group.addLayer(layer_TauxdepauvretEPCI2020_10);
+        function pop_Communescouvertesparuneaidealimentaire_11(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Ville" colspan="2"><strong>Commune</strong><br />' + (feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Ville'] !== null ? autolinker.link(String(feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Ville']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Associations qui couvrent la commune" colspan="2"><strong>Associations qui couvrent la commune en aide alimentaire</strong><br />' + (feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Associations qui couvrent la commune'] !== null ? autolinker.link(String(feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Associations qui couvrent la commune']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Dispositif" colspan="2"><strong>Dispositif</strong><br />' + (feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Dispositif'] !== null ? autolinker.link(String(feature.properties['Liste Communes Couvertes BA61 - retravaillée - Feuille 1_Dispositif']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Communescouvertesparuneaidealimentaire_11_0() {
             return {
-                pane: 'pane_Associationspartenaires_BA61_14',
-                radius: 5.2,
+                pane: 'pane_Communescouvertesparuneaidealimentaire_11',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 2.0,
+                weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(250,130,0,0.9882352941176471)',
+                fillColor: 'rgba(0,22,191,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_Associationspartenaires_BA61_14');
-        map.getPane('pane_Associationspartenaires_BA61_14').style.zIndex = 414;
-        map.getPane('pane_Associationspartenaires_BA61_14').style['mix-blend-mode'] = 'normal';
-        var layer_Associationspartenaires_BA61_14 = new L.geoJson(json_Associationspartenaires_BA61_14, {
+        map.createPane('pane_Communescouvertesparuneaidealimentaire_11');
+        map.getPane('pane_Communescouvertesparuneaidealimentaire_11').style.zIndex = 411;
+        map.getPane('pane_Communescouvertesparuneaidealimentaire_11').style['mix-blend-mode'] = 'normal';
+        var layer_Communescouvertesparuneaidealimentaire_11 = new L.geoJson(json_Communescouvertesparuneaidealimentaire_11, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Associationspartenaires_BA61_14',
-            layerName: 'layer_Associationspartenaires_BA61_14',
-            pane: 'pane_Associationspartenaires_BA61_14',
-            onEachFeature: pop_Associationspartenaires_BA61_14,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Associationspartenaires_BA61_14_0(feature));
-            },
+            dataVar: 'json_Communescouvertesparuneaidealimentaire_11',
+            layerName: 'layer_Communescouvertesparuneaidealimentaire_11',
+            pane: 'pane_Communescouvertesparuneaidealimentaire_11',
+            onEachFeature: pop_Communescouvertesparuneaidealimentaire_11,
+            style: style_Communescouvertesparuneaidealimentaire_11_0,
         });
-        bounds_group.addLayer(layer_Associationspartenaires_BA61_14);
-        map.addLayer(layer_Associationspartenaires_BA61_14);
-        function pop_BanquesAlimentairesRgionNormandieBA72_15(feature, layer) {
+        bounds_group.addLayer(layer_Communescouvertesparuneaidealimentaire_11);
+        map.addLayer(layer_Communescouvertesparuneaidealimentaire_11);
+        function pop_Trononsderoute_12(feature, layer) {
+            var popupContent = '<table>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Trononsderoute_12_0() {
+            return {
+                pane: 'pane_Trononsderoute_12',
+                opacity: 1,
+                color: 'rgba(54,130,229,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Trononsderoute_12');
+        map.getPane('pane_Trononsderoute_12').style.zIndex = 412;
+        map.getPane('pane_Trononsderoute_12').style['mix-blend-mode'] = 'normal';
+        var layer_Trononsderoute_12 = new L.geoJson(json_Trononsderoute_12, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Trononsderoute_12',
+            layerName: 'layer_Trononsderoute_12',
+            pane: 'pane_Trononsderoute_12',
+            onEachFeature: pop_Trononsderoute_12,
+            style: style_Trononsderoute_12_0,
+        });
+        bounds_group.addLayer(layer_Trononsderoute_12);
+        function pop_Lignesdebus_13(feature, layer) {
+            var popupContent = '<table>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Lignesdebus_13_0() {
+            return {
+                pane: 'pane_Lignesdebus_13',
+                opacity: 1,
+                color: 'rgba(228,18,149,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 1.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_Lignesdebus_13');
+        map.getPane('pane_Lignesdebus_13').style.zIndex = 413;
+        map.getPane('pane_Lignesdebus_13').style['mix-blend-mode'] = 'normal';
+        var layer_Lignesdebus_13 = new L.geoJson(json_Lignesdebus_13, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Lignesdebus_13',
+            layerName: 'layer_Lignesdebus_13',
+            pane: 'pane_Lignesdebus_13',
+            onEachFeature: pop_Lignesdebus_13,
+            style: style_Lignesdebus_13_0,
+        });
+        bounds_group.addLayer(layer_Lignesdebus_13);
+        function pop_Autresassociationsnonpartenaires_14(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td class="visible-with-data" id="BANQUES AL" colspan="2"><strong>BA</strong><br />' + (feature.properties['BANQUES AL'] !== null ? autolinker.link(String(feature.properties['BANQUES AL']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td class="visible-with-data" id="adresse1" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['adresse1'] !== null ? autolinker.link(String(feature.properties['adresse1']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['adresse2'] !== null ? autolinker.link(String(feature.properties['adresse2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['CP'] !== null ? autolinker.link(String(feature.properties['CP']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['ville'] !== null ? autolinker.link(String(feature.properties['ville']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td class="visible-with-data" id="Fonctionnement" colspan="2"><strong>Fonctionnement</strong><br />' + (feature.properties['Fonctionnement'] !== null ? autolinker.link(String(feature.properties['Fonctionnement']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -1123,55 +1042,358 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_BanquesAlimentairesRgionNormandieBA72_15_0() {
+        function style_Autresassociationsnonpartenaires_14_0() {
             return {
-                pane: 'pane_BanquesAlimentairesRgionNormandieBA72_15',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/BanquesAlimentairesRgionNormandieBA72_15.svg',
-            iconSize: [18.24, 18.24]
-        }),
+                pane: 'pane_Autresassociationsnonpartenaires_14',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(93,48,100,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_BanquesAlimentairesRgionNormandieBA72_15');
-        map.getPane('pane_BanquesAlimentairesRgionNormandieBA72_15').style.zIndex = 415;
-        map.getPane('pane_BanquesAlimentairesRgionNormandieBA72_15').style['mix-blend-mode'] = 'normal';
-        var layer_BanquesAlimentairesRgionNormandieBA72_15 = new L.geoJson(json_BanquesAlimentairesRgionNormandieBA72_15, {
+        map.createPane('pane_Autresassociationsnonpartenaires_14');
+        map.getPane('pane_Autresassociationsnonpartenaires_14').style.zIndex = 414;
+        map.getPane('pane_Autresassociationsnonpartenaires_14').style['mix-blend-mode'] = 'normal';
+        var layer_Autresassociationsnonpartenaires_14 = new L.geoJson(json_Autresassociationsnonpartenaires_14, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_BanquesAlimentairesRgionNormandieBA72_15',
-            layerName: 'layer_BanquesAlimentairesRgionNormandieBA72_15',
-            pane: 'pane_BanquesAlimentairesRgionNormandieBA72_15',
-            onEachFeature: pop_BanquesAlimentairesRgionNormandieBA72_15,
+            dataVar: 'json_Autresassociationsnonpartenaires_14',
+            layerName: 'layer_Autresassociationsnonpartenaires_14',
+            pane: 'pane_Autresassociationsnonpartenaires_14',
+            onEachFeature: pop_Autresassociationsnonpartenaires_14,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.marker(latlng, style_BanquesAlimentairesRgionNormandieBA72_15_0(feature));
+                return L.circleMarker(latlng, style_Autresassociationsnonpartenaires_14_0(feature));
             },
         });
-        bounds_group.addLayer(layer_BanquesAlimentairesRgionNormandieBA72_15);
-        map.addLayer(layer_BanquesAlimentairesRgionNormandieBA72_15);
+        bounds_group.addLayer(layer_Autresassociationsnonpartenaires_14);
+        map.addLayer(layer_Autresassociationsnonpartenaires_14);
+        function pop_RestoduCoeur_15(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Fonctionnement" colspan="2"><strong>Fonctionnement</strong><br />' + (feature.properties['Fonctionnement'] !== null ? autolinker.link(String(feature.properties['Fonctionnement']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_RestoduCoeur_15_0() {
+            return {
+                pane: 'pane_RestoduCoeur_15',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/RestoduCoeur_15.svg',
+            iconSize: [18.24, 18.24]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_RestoduCoeur_15');
+        map.getPane('pane_RestoduCoeur_15').style.zIndex = 415;
+        map.getPane('pane_RestoduCoeur_15').style['mix-blend-mode'] = 'normal';
+        var layer_RestoduCoeur_15 = new L.geoJson(json_RestoduCoeur_15, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_RestoduCoeur_15',
+            layerName: 'layer_RestoduCoeur_15',
+            pane: 'pane_RestoduCoeur_15',
+            onEachFeature: pop_RestoduCoeur_15,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_RestoduCoeur_15_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_RestoduCoeur_15);
+        map.addLayer(layer_RestoduCoeur_15);
+        function pop_SecoursPopulaire_16(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Fonctionnement" colspan="2"><strong>Fonctionnement</strong><br />' + (feature.properties['Fonctionnement'] !== null ? autolinker.link(String(feature.properties['Fonctionnement']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_SecoursPopulaire_16_0() {
+            return {
+                pane: 'pane_SecoursPopulaire_16',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/SecoursPopulaire_16.svg',
+            iconSize: [17.479999999999997, 17.479999999999997]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_SecoursPopulaire_16');
+        map.getPane('pane_SecoursPopulaire_16').style.zIndex = 416;
+        map.getPane('pane_SecoursPopulaire_16').style['mix-blend-mode'] = 'normal';
+        var layer_SecoursPopulaire_16 = new L.geoJson(json_SecoursPopulaire_16, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_SecoursPopulaire_16',
+            layerName: 'layer_SecoursPopulaire_16',
+            pane: 'pane_SecoursPopulaire_16',
+            onEachFeature: pop_SecoursPopulaire_16,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_SecoursPopulaire_16_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_SecoursPopulaire_16);
+        map.addLayer(layer_SecoursPopulaire_16);
+        function pop_SecoursCatholique_17(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Fonctionnement" colspan="2"><strong>Fonctionnement</strong><br />' + (feature.properties['Fonctionnement'] !== null ? autolinker.link(String(feature.properties['Fonctionnement']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_SecoursCatholique_17_0() {
+            return {
+                pane: 'pane_SecoursCatholique_17',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/SecoursCatholique_17.svg',
+            iconSize: [11.399999999999999, 11.399999999999999]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_SecoursCatholique_17');
+        map.getPane('pane_SecoursCatholique_17').style.zIndex = 417;
+        map.getPane('pane_SecoursCatholique_17').style['mix-blend-mode'] = 'normal';
+        var layer_SecoursCatholique_17 = new L.geoJson(json_SecoursCatholique_17, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_SecoursCatholique_17',
+            layerName: 'layer_SecoursCatholique_17',
+            pane: 'pane_SecoursCatholique_17',
+            onEachFeature: pop_SecoursCatholique_17,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_SecoursCatholique_17_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_SecoursCatholique_17);
+        map.addLayer(layer_SecoursCatholique_17);
+        function pop_CroixRouge_18(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Nom" colspan="2"><strong>Nom</strong><br />' + (feature.properties['Nom'] !== null ? autolinker.link(String(feature.properties['Nom']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Fonctionnement" colspan="2"><strong>Fonctionnement</strong><br />' + (feature.properties['Fonctionnement'] !== null ? autolinker.link(String(feature.properties['Fonctionnement']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_CroixRouge_18_0() {
+            return {
+                pane: 'pane_CroixRouge_18',
+        rotationAngle: 0.0,
+        rotationOrigin: 'center center',
+        icon: L.icon({
+            iconUrl: 'markers/CroixRouge_18.svg',
+            iconSize: [17.479999999999997, 17.479999999999997]
+        }),
+                interactive: true,
+            }
+        }
+        map.createPane('pane_CroixRouge_18');
+        map.getPane('pane_CroixRouge_18').style.zIndex = 418;
+        map.getPane('pane_CroixRouge_18').style['mix-blend-mode'] = 'normal';
+        var layer_CroixRouge_18 = new L.geoJson(json_CroixRouge_18, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_CroixRouge_18',
+            layerName: 'layer_CroixRouge_18',
+            pane: 'pane_CroixRouge_18',
+            onEachFeature: pop_CroixRouge_18,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.marker(latlng, style_CroixRouge_18_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_CroixRouge_18);
+        map.addLayer(layer_CroixRouge_18);
+        function pop_Associationspartenaires_19(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="Partenaires" colspan="2"><strong>Partenaires</strong><br />' + (feature.properties['Partenaires'] !== null ? autolinker.link(String(feature.properties['Partenaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Full Address" colspan="2"><strong>Adresse</strong><br />' + (feature.properties['Full Address'] !== null ? autolinker.link(String(feature.properties['Full Address']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Téléphone" colspan="2"><strong>Téléphone</strong><br />' + (feature.properties['Téléphone'] !== null ? autolinker.link(String(feature.properties['Téléphone']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Email" colspan="2"><strong>Email</strong><br />' + (feature.properties['Email'] !== null ? autolinker.link(String(feature.properties['Email']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Fréquence" colspan="2"><strong>Fréquence</strong><br />' + (feature.properties['Fréquence'] !== null ? autolinker.link(String(feature.properties['Fréquence']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Type de distribution" colspan="2"><strong>Type de distribution</strong><br />' + (feature.properties['Type de distribution'] !== null ? autolinker.link(String(feature.properties['Type de distribution']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="Bénéficiaires" colspan="2"><strong>Bénéficiaires</strong><br />' + (feature.properties['Bénéficiaires'] !== null ? autolinker.link(String(feature.properties['Bénéficiaires']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Associationspartenaires_19_0() {
+            return {
+                pane: 'pane_Associationspartenaires_19',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,127,0,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Associationspartenaires_19');
+        map.getPane('pane_Associationspartenaires_19').style.zIndex = 419;
+        map.getPane('pane_Associationspartenaires_19').style['mix-blend-mode'] = 'normal';
+        var layer_Associationspartenaires_19 = new L.geoJson(json_Associationspartenaires_19, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Associationspartenaires_19',
+            layerName: 'layer_Associationspartenaires_19',
+            pane: 'pane_Associationspartenaires_19',
+            onEachFeature: pop_Associationspartenaires_19,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Associationspartenaires_19_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Associationspartenaires_19);
+        map.addLayer(layer_Associationspartenaires_19);
         var overlaysTree = [
-            {label: '<img src="legend/BanquesAlimentairesRgionNormandieBA72_15.png" /> Banques Alimentaires (Région Normandie + BA72)', layer: layer_BanquesAlimentairesRgionNormandieBA72_15},
-            {label: '<img src="legend/Associationspartenaires_BA61_14.png" /> Associations partenaires_BA61', layer: layer_Associationspartenaires_BA61_14},
-            {label: '<img src="legend/CroixRouge_Orne_13.png" /> Croix Rouge_Orne', layer: layer_CroixRouge_Orne_13},
-            {label: '<img src="legend/SecoursCatholique_Orne_12.png" /> Secours Catholique _Orne', layer: layer_SecoursCatholique_Orne_12},
-            {label: '<img src="legend/SecoursPopulaire_Orne_11.png" /> Secours Populaire_Orne', layer: layer_SecoursPopulaire_Orne_11},
-            {label: '<img src="legend/RestoduCoeur_Orne_10.png" /> Resto du Coeur_Orne', layer: layer_RestoduCoeur_Orne_10},
-            {label: '<img src="legend/Normandie_9.png" />  Normandie', layer: layer_Normandie_9},
-            {label: '<img src="legend/Dpartements_Normandie_8.png" /> Départements_Normandie', layer: layer_Dpartements_Normandie_8},
-            {label: 'Taux de pauvreté EPCI (2020)<br /><table><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_7_1151210.png" /></td><td>11,5 - 12,1</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_7_1211351.png" /></td><td>12,1 - 13,5</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_7_1351452.png" /></td><td>13,5 - 14,5</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_7_1451663.png" /></td><td>14,5 - 16,6</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_7_1661874.png" /></td><td>16,6 - 18,7</td></tr></table>', layer: layer_TauxdepauvretEPCI2020_7},
-            {label: 'Indice - risque de précarité alimentaire<br /><table><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_6_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_6_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_6_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_6_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_6_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indicerisquedeprcaritalimentaire_6},
-            {label: 'Indice - isolement social<br /><table><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_5_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_5_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_5_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_5_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_5_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indiceisolementsocial_5},
-            {label: 'Indice - environement alimentaire appauvri<br /><table><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_4_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_4_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_4_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_4_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_4_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indiceenvironementalimentaireappauvri_4},
-            {label: 'Indice - contraine économique<br /><table><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_3_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_3_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_3_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_3_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_3_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indicecontraineconomique_3},
-            {label: '<img src="legend/EPCI_Orne_2.png" /> EPCI_Orne', layer: layer_EPCI_Orne_2},
+            {label: '<img src="legend/Associationspartenaires_19.png" /> Associations partenaires', layer: layer_Associationspartenaires_19},
+            {label: '<img src="legend/CroixRouge_18.png" /> Croix Rouge', layer: layer_CroixRouge_18},
+            {label: '<img src="legend/SecoursCatholique_17.png" /> Secours Catholique', layer: layer_SecoursCatholique_17},
+            {label: '<img src="legend/SecoursPopulaire_16.png" /> Secours Populaire', layer: layer_SecoursPopulaire_16},
+            {label: '<img src="legend/RestoduCoeur_15.png" /> Resto du Coeur', layer: layer_RestoduCoeur_15},
+            {label: '<img src="legend/Autresassociationsnonpartenaires_14.png" /> Autres associations non-partenaires', layer: layer_Autresassociationsnonpartenaires_14},
+            {label: '<img src="legend/Lignesdebus_13.png" /> Lignes de bus', layer: layer_Lignesdebus_13},
+            {label: '<img src="legend/Trononsderoute_12.png" /> Tronçons de route', layer: layer_Trononsderoute_12},
+            {label: '<img src="legend/Communescouvertesparuneaidealimentaire_11.png" /> Communes couvertes par une aide alimentaire', layer: layer_Communescouvertesparuneaidealimentaire_11},
+            {label: 'Taux de pauvreté EPCI (2020)<br /><table><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_10_590.png" /></td><td>5 - 9</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_10_91261.png" /></td><td>9 - 12,6</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_10_1261612.png" /></td><td>12,6 - 16,1</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_10_1612023.png" /></td><td>16,1 - 20,2</td></tr><tr><td style="text-align: center;"><img src="legend/TauxdepauvretEPCI2020_10_2022954.png" /></td><td>20,2 - 29,5</td></tr></table>', layer: layer_TauxdepauvretEPCI2020_10},
+            {label: 'Indice - risque de précarité alimentaire<br /><table><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_9_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_9_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_9_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_9_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indicerisquedeprcaritalimentaire_9_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indicerisquedeprcaritalimentaire_9},
+            {label: 'Indice - isolement social<br /><table><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_8_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_8_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_8_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_8_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceisolementsocial_8_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indiceisolementsocial_8},
+            {label: 'Indice - information alimentaire insufisante<br /><table><tr><td style="text-align: center;"><img src="legend/Indiceinformationalimentaireinsufisante_7_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceinformationalimentaireinsufisante_7_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceinformationalimentaireinsufisante_7_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceinformationalimentaireinsufisante_7_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceinformationalimentaireinsufisante_7_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indiceinformationalimentaireinsufisante_7},
+            {label: 'Indice - environement alimentaire appauvri<br /><table><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_6_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_6_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_6_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_6_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indiceenvironementalimentaireappauvri_6_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indiceenvironementalimentaireappauvri_6},
+            {label: 'Indice - contraine économique<br /><table><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_5_1Leplusbas0.png" /></td><td>1 - Le plus bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_5_2Bas1.png" /></td><td>2 - Bas</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_5_3Moyen2.png" /></td><td>3 - Moyen</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_5_4Elevé3.png" /></td><td>4 - Elevé</td></tr><tr><td style="text-align: center;"><img src="legend/Indicecontraineconomique_5_5Leplusélevé4.png" /></td><td>5 - Le plus élevé</td></tr></table>', layer: layer_Indicecontraineconomique_5},
+            {label: '<img src="legend/Dpartement_4.png" /> Département ', layer: layer_Dpartement_4},
+            {label: '<img src="legend/RgionNormandie_3.png" /> Région Normandie', layer: layer_RgionNormandie_3},
+            {label: '<img src="legend/EPCI_2.png" /> EPCI', layer: layer_EPCI_2},
             {label: '<img src="legend/Communes_1.png" /> Communes', layer: layer_Communes_1},
-            {label: "Google Road", layer: layer_GoogleRoad_0},]
+            {label: "Google Maps", layer: layer_GoogleMaps_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
             //namedToggle: true,
             //selectorBack: false,
@@ -1237,7 +1459,7 @@
             layer: layer_Communes_1,
             initial: false,
             hideMarkerOnCollapse: true,
-            propertyName: 'libgeo'}));
+            propertyName: 'codgeo'}));
         document.getElementsByClassName('search-button')[0].className +=
          ' fa fa-binoculars';
         </script>
